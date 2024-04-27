@@ -1,15 +1,13 @@
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth"
 import { createContext, useEffect, useState } from "react"
 import PropTypes from 'prop-types';
-import auth from "../firebase/firebase.cofig"
-
+import auth from '../firebase/firebase.config'
 
 export const AuthContext = createContext(null)
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-
 
     // sing in with google
 
@@ -22,7 +20,6 @@ const AuthProvider = ({ children }) => {
     // Register email and password
 
     const createUser = (email, password) => {
-        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
@@ -50,41 +47,41 @@ const AuthProvider = ({ children }) => {
 
     // logout function
 
-    const logOut = () => {
-        setLoading(true)
-        return signOut(auth)
-    }
-
+    // const logOut = () => {
+    //     setLoading(true)
+    //     return signOut(auth)
+    // }
 
 
     const authInfo = {
         user,
-        loading,
-        googleSingIn,
+        // loading,
+        // googleSingIn,
         createUser,
-        githubSingIn,
+        // githubSingIn,
         updateUserProfile,
-        logInUser,
-        logOut
+        // logInUser,
+        // logOut
 
     }
 
 
-    useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser)
-            setLoading(false)
-        })
-        return () => {
-            unSubscribe();
-        }
-    }, [])
+    // useEffect(() => {
+    //     const unSubscribe = onAuthStateChanged(auth, currentUser => {
+    //         setUser(currentUser)
+    //         setLoading(false)
+    //     })
+    //     return () => {
+    //         unSubscribe();
+    //     }
+    // }, [])
 
 
     return (
         <div>
             <AuthContext.Provider value={authInfo}>
                 {children}
+                
             </AuthContext.Provider>
         </div>
     )
