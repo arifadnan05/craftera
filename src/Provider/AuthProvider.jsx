@@ -47,34 +47,34 @@ const AuthProvider = ({ children }) => {
 
     // logout function
 
-    // const logOut = () => {
-    //     setLoading(true)
-    //     return signOut(auth)
-    // }
+    const logOut = () => {
+        setLoading(true)
+        return signOut(auth)
+    }
 
 
     const authInfo = {
         user,
-        // loading,
-        // googleSingIn,
+        loading,
+        googleSingIn,
         createUser,
-        // githubSingIn,
+        githubSingIn,
         updateUserProfile,
-        // logInUser,
-        // logOut
+        logInUser,
+        logOut
 
     }
 
 
-    // useEffect(() => {
-    //     const unSubscribe = onAuthStateChanged(auth, currentUser => {
-    //         setUser(currentUser)
-    //         setLoading(false)
-    //     })
-    //     return () => {
-    //         unSubscribe();
-    //     }
-    // }, [])
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser)
+            setLoading(false)
+        })
+        return () => {
+            unSubscribe();
+        }
+    }, [])
 
 
     return (

@@ -5,8 +5,8 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 
 const Register = () => {
-  const { createUser, updateUserProfile } = useContext(AuthContext);
-
+  const { createUser, updateUserProfile, user } = useContext(AuthContext);
+console.log(user)
 
   const {
     register,
