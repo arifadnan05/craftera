@@ -27,7 +27,7 @@ const AddCraftItem = () => {
       .then(res => res.json())
       .then(data => {
         if (data.insertedId) {
-          alert('user added')
+          alert('Item Added')
         }
       })
   }
