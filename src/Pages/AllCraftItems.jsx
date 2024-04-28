@@ -1,9 +1,27 @@
-import { useLoaderData } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
 
 const AllCraftItems = () => {
 
   const items = useLoaderData()
-  console.log(items)
+
+
+  
+
+  // fetch(`http://localhost:5000/coffee/${items._id}`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'content-type': 'application/json'
+  //     },
+  //     body: JSON.stringify(updatedCoffee)
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       if (data.modifiedCount > 0) {
+  //         Swal.fire({
+  //           title: "Awesome!",
+  //           text: "Coffee Updated SuccessFully!",
+  //           icon: "success"
+  //         });
 
   return (
     <div className="overflow-x-auto">
@@ -11,16 +29,17 @@ const AllCraftItems = () => {
         {/* head */}
         <thead>
           <tr>
+            <th></th>
             <th>Item Name:</th>
             <th>Category:</th>
             <th>Status:</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
           {/* row 1 */}
           {
-            items.map(item => <tr key={item._id}>
+            items.map((item, index) => <tr key={item._id}>
+              <th>{index + 1}</th>
               <td>
                 <div className="flex items-center gap-3">
                   <div className="avatar">
@@ -36,7 +55,9 @@ const AllCraftItems = () => {
               <td>{item.subcategory_name}</td>
               <td>{item.stockStatus}</td>
               <th>
-                <button className="btn btn-info">View Details Page</button>
+              <Link to={`/craft-item-details/${item._id}`}>
+              <button className="btn btn-primary">View Property</button>
+            </Link>
               </th>
             </tr>)
           }

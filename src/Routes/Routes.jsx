@@ -7,6 +7,7 @@ import Root from "../Root/Root";
 import MyCraftList from "../Pages/MyCraftList";
 import AddCraftItem from "../Pages/AddCraftItem";
 import PrivetRoutes from "./PrivetRoutes";
+import CraftItemDetails from "../Pages/CraftItemDetails";
 
 const router = createBrowserRouter ([
     {
@@ -37,6 +38,11 @@ const router = createBrowserRouter ([
             {
                 path: '/add-craft-item',
                 element: <PrivetRoutes><AddCraftItem></AddCraftItem></PrivetRoutes>
+            },
+            {
+                path: '/craft-item-details/:id',
+                element: <CraftItemDetails></CraftItemDetails>,
+                loader: () => fetch('http://localhost:5000/craft-item')
             }
         ]
     }
