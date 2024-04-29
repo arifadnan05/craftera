@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../Provider/AuthProvider"
 import { FaStar } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyCraftList = () => {
   const [myItem, setMyItem] = useState([])
@@ -34,28 +35,22 @@ const MyCraftList = () => {
           text: "Your craft item has been deleted.",
           icon: "success"
         });
-// single data fetching......
+        // single data fetching......
         fetch(`http://localhost:5000/craft-item/${_id}`,
-        {
-          method: 'DELETE'
-        }
-      )
-        .then(res => res.json())
-        .then(data => {
-          console.log(data)
-        })
+          {
+            method: 'DELETE'
+          }
+        )
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+          })
 
       }
     });
-    
 
-
-
-
-
-  
   }
- 
+
   return (
     <div className="grid grid-cols-3 gap-5 border">
       {
@@ -72,7 +67,10 @@ const MyCraftList = () => {
               <p>Customizable:- {single.customization}</p>
             </div>
             <div className="card-actions">
-                <button onClick={() => handleDelete (single._id)} className="btn btn-primary">Delete</button>
+              <button onClick={() => handleDelete(single._id)} className="btn btn-primary">Delete</button>
+              <Link to={`/update-my-list/${single.userEmail}`}>
+                <button>Update</button>
+              </Link>
             </div>
           </div>
         </div>)

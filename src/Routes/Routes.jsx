@@ -9,11 +9,13 @@ import AddCraftItem from "../Pages/AddCraftItem";
 import PrivetRoutes from "./PrivetRoutes";
 import CraftItemDetails from "../Pages/CraftItemDetails";
 import UpdateMyList from "../Pages/UpdateMyList";
+import Error from "../Pages/Error/Error";
 
 const router = createBrowserRouter ([
     {
         path: '/',
         element: <Root></Root>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
@@ -46,9 +48,9 @@ const router = createBrowserRouter ([
                 loader: () => fetch('http://localhost:5000/craft-item')
             },
             {
-                path: '/update-my-list/:id',
+                path: '/update-my-list/:email',
                 element: <UpdateMyList></UpdateMyList>,
-                loader: ({ params }) => fetch(`http://localhost:5000/craft-item/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/craft-item/${params.email}`)
             }
         ]
     }
