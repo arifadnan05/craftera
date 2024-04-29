@@ -8,6 +8,7 @@ import MyCraftList from "../Pages/MyCraftList";
 import AddCraftItem from "../Pages/AddCraftItem";
 import PrivetRoutes from "./PrivetRoutes";
 import CraftItemDetails from "../Pages/CraftItemDetails";
+import UpdateMyList from "../Pages/UpdateMyList";
 
 const router = createBrowserRouter ([
     {
@@ -43,6 +44,11 @@ const router = createBrowserRouter ([
                 path: '/craft-item-details/:id',
                 element: <CraftItemDetails></CraftItemDetails>,
                 loader: () => fetch('http://localhost:5000/craft-item')
+            },
+            {
+                path: '/update-my-list/:id',
+                element: <UpdateMyList></UpdateMyList>,
+                loader: ({ params }) => fetch(`http://localhost:5000/craft-item/${params.id}`)
             }
         ]
     }

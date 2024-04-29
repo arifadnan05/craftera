@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../Provider/AuthProvider"
 import { FaStar } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const MyCraftList = () => {
   const [myItem, setMyItem] = useState([])
@@ -14,12 +15,53 @@ const MyCraftList = () => {
 
       })
   }, [user])
+
+  const handleDelete = _id => {
+    console.log(_id)
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be delete craft item",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your craft item has been deleted.",
+          icon: "success"
+        });
+// single data fetching......
+        fetch(`http://localhost:5000/craft-item/${_id}`,
+        {
+          method: 'DELETE'
+        }
+      )
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+        })
+
+      }
+    });
+    
+
+
+
+
+
+  
+  }
+ 
   return (
-    <div>
+    <div className="grid grid-cols-3 gap-5 border">
       {
-        myItem.map(single => <div key={single._id} className="relative card w-96 bg-base-100 shadow-xl">
+        myItem.map(single => <div key={single._id} className="relative card bg-base-100 shadow-xl">
           <p className="absolute badge bg-amber-500 py-4 text-black font-bold ml-5 mt-5">{single.stockStatus}</p>
-          <figure><img src={single.photo}/></figure>
+          <figure><img className="rounded-2xl" src={single.photo} /></figure>
           <div className="card-body">
             <h2 className="card-title">{single.item_name}</h2>
             <div className="flex items-center justify-center my-4">
@@ -30,7 +72,7 @@ const MyCraftList = () => {
               <p>Customizable:- {single.customization}</p>
             </div>
             <div className="card-actions">
-              <button className="btn btn-primary">Buy Now</button>
+                <button onClick={() => handleDelete (single._id)} className="btn btn-primary">Delete</button>
             </div>
           </div>
         </div>)
