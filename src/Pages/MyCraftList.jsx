@@ -3,6 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider"
 import { FaStar } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const MyCraftList = () => {
   const [myItem, setMyItem] = useState([])
@@ -51,30 +52,46 @@ const MyCraftList = () => {
 
   }
 
+  const { register, handleSubmit } = useForm()
+  const onSubmit = (data) => console.log(data)
+
   return (
-    <div className="grid grid-cols-3 gap-5 border">
-      {
-        myItem.map(single => <div key={single._id} className="relative card bg-base-100 shadow-xl">
-          <p className="absolute badge bg-amber-500 py-4 text-black font-bold ml-5 mt-5">{single.stockStatus}</p>
-          <figure><img className="rounded-2xl" src={single.photo} /></figure>
-          <div className="card-body">
-            <h2 className="card-title">{single.item_name}</h2>
-            <div className="flex items-center justify-center my-4">
-              <p className="flex justify-center">Price:- ${single.price}</p>
-              <p className="flex items-center justify-center">Rating:- {single.rating} <FaStar /></p>
+
+    <div>
+      <div className="flex justify-center mt-9">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <select className="border px-4 py-3 rounded-lg" {...register("customization")}>
+            <option disabled selected>Customization</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </form>
+      </div>
+      <div className="grid grid-cols-3 gap-5 my-10">
+
+        {
+          myItem.map(single => <div key={single._id} className="relative card bg-base-100 shadow-xl">
+            <p className="absolute badge bg-amber-500 py-4 text-black font-bold ml-5 mt-5">{single.stockStatus}</p>
+            <figure><img className="rounded-2xl" src={single.photo} /></figure>
+            <div className="card-body">
+              <h2 className="card-title">{single.item_name}</h2>
+              <div className="flex items-center justify-center my-4">
+                <p className="flex justify-center">Price:- ${single.price}</p>
+                <p className="flex items-center justify-center">Rating:- {single.rating} <FaStar /></p>
+              </div>
+              <div className="mx-auto">
+                <p>Customizable:- {single.customization}</p>
+              </div>
+              <div className="card-actions">
+                <button onClick={() => handleDelete(single._id)} className="btn btn-warning">Delete</button>
+                <Link to={`/update-my-list/${single.userEmail}`}>
+                  <button>Update</button>
+                </Link>
+              </div>
             </div>
-            <div className="mx-auto">
-              <p>Customizable:- {single.customization}</p>
-            </div>
-            <div className="card-actions">
-              <button onClick={() => handleDelete(single._id)} className="btn btn-primary">Delete</button>
-              <Link to={`/update-my-list/${single.userEmail}`}>
-                <button>Update</button>
-              </Link>
-            </div>
-          </div>
-        </div>)
-      }
+          </div>)
+        }
+      </div>
     </div>
   )
 }
