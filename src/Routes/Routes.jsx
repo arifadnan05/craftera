@@ -10,6 +10,7 @@ import PrivetRoutes from "./PrivetRoutes";
 import CraftItemDetails from "../Pages/CraftItemDetails";
 import UpdateMyList from "../Pages/UpdateMyList";
 import Error from "../Pages/Error/Error";
+import ViewCardDetails from "../Pages/HomeCard/ViewCardDetails";
 
 const router = createBrowserRouter ([
     {
@@ -51,6 +52,11 @@ const router = createBrowserRouter ([
                 path: '/update-my-list/:email',
                 element: <UpdateMyList></UpdateMyList>,
                 loader: ({ params }) => fetch(`http://localhost:5000/craft-item/${params.email}`)
+            },
+            {
+                path: '/view-card-details/:id',
+                element: <ViewCardDetails></ViewCardDetails>,
+                loader: () => fetch(`http://localhost:5000/art-craft-card`)
             }
         ]
     }
