@@ -49,9 +49,9 @@ const router = createBrowserRouter ([
                 loader: () => fetch('http://localhost:5000/craft-item')
             },
             {
-                path: '/update-my-list/:email',
+                path: '/update-my-list/:id',
                 element: <UpdateMyList></UpdateMyList>,
-                loader: ({ params }) => fetch(`http://localhost:5000/craft-item/${params.email}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/craftitem/${params.id}`)
             },
             {
                 path: '/view-card-details/:id',

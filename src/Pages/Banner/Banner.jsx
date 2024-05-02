@@ -21,7 +21,7 @@ export default function App() {
         spaceBetween={200}
         centeredSlides={true}
         autoplay={{
-          delay: 3000,
+          delay: 4000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -36,13 +36,13 @@ export default function App() {
         <SwiperSlide>
           <>
             <div className='w-full h-full relative flex justify-center items-center'>
-              <img className='h-full w-full ' src='https://images.saatchiart.com/saatchi/809265/art/8624615/7688296-HSC00002-7.jpg' />
+              <img className='h-full w-full' src='https://images.saatchiart.com/saatchi/809265/art/8624615/7688296-HSC00002-7.jpg' />
 
 
 
-              <div className='absolute  md:top-[25%] border flex flex-col items-center justify-center'>
-                <h1 className='font-bold text-xl md:text-3xl lg:text-6xl text-red-500'>The Saga of Rickshaw</h1>
-                <p className='text-white lg:text-[20px] md:text-[16px] w-1/2 lg:mt-4 text-[12px]'>
+              <div className='absolute md:top-[25%] flex flex-col items-center justify-center'>
+                <h1 className='font-black text-xl md:text-3xl lg:text-6xl text-red-500'>The Saga of Rickshaw</h1>
+                <p className='text-rose-600 lg:text-[20px] md:text-[16px] w-1/2 lg:mt-4 text-[12px]'>
 
                   This is Bangladesh rikshaw bangladesh every place are seeing this and its bangladesh tradition</p>
 
@@ -64,7 +64,7 @@ export default function App() {
 
 
 
-              <div className='absolute  md:top-[25%] border flex flex-col items-center justify-center'>
+              <div className='absolute  md:top-[25%] flex flex-col items-center justify-center'>
                 <h1 className='font-bold text-xl md:text-3xl lg:text-6xl text-red-500'>The Saga of Rickshaw</h1>
                 <p className='text-white lg:text-[20px] md:text-[16px] w-1/2 lg:mt-4 text-[12px]'>
 

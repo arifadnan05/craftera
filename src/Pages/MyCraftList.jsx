@@ -57,7 +57,7 @@ const MyCraftList = () => {
 
   return (
 
-    <div>
+    <div className="px-32">
       <div className="flex justify-center mt-9">
         <form onSubmit={handleSubmit(onSubmit)}>
           <select className="border px-4 py-3 rounded-lg" {...register("customization")}>
@@ -82,10 +82,10 @@ const MyCraftList = () => {
               <div className="mx-auto">
                 <p>Customizable:- {single.customization}</p>
               </div>
-              <div className="card-actions">
+              <div className="card-actions flex justify-between mt-4">
                 <button onClick={() => handleDelete(single._id)} className="btn btn-warning">Delete</button>
-                <Link to={`/update-my-list/${single.userEmail}`}>
-                  <button>Update</button>
+                <Link to={`/update-my-list/${single._id}`}>
+                  <button className="btn btn-info">Update</button>
                 </Link>
               </div>
             </div>
