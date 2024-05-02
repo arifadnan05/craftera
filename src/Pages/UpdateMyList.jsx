@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const UpdateMyList = () => {
   const craftItem = useLoaderData();
-  const {_id, item_name, subcategory_name, price, processing_time, rating, customization, stockStatus, short_description, photo} = craftItem;
+  const {_id, item_name, subcategory_name, price, processing_time, short_description, photo} = craftItem;
 
   const {
     register,
