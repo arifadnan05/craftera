@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const UpdateMyList = () => {
   const craftItem = useLoaderData();
-  const {_id, item_name, subcategory_name, price, processing_time, short_description, photo} = craftItem;
+  const { _id, item_name, subCategory, price, processing_time, short_description, photo } = craftItem;
 
   const {
     register,
@@ -13,9 +13,9 @@ const UpdateMyList = () => {
     formState: { errors },
   } = useForm()
   const onSubmit = (data) => {
-    const { item_name, subcategory_name, price, processing_time, rating, customization, stockStatus, short_description, photo } = data;
+    const { item_name, subCategory, price, processing_time, rating, customization, stockStatus, short_description, photo } = data;
 
-    const updateMyCraftItem = { item_name, subcategory_name, price, processing_time, rating, customization, stockStatus, short_description, photo}
+    const updateMyCraftItem = { item_name, subCategory, price, processing_time, rating, customization, stockStatus, short_description, photo }
 
 
 
@@ -56,8 +56,15 @@ const UpdateMyList = () => {
             {errors.photo && <span>This field is required</span>}
           </div>
           <div className="flex flex-col w-1/2">
-            <input defaultValue={subcategory_name} type="text" placeholder="Subcategory Name" className="input input-bordered w-full" {...register("subcategory_name", { required: true })} />
-            {errors.photo && <span>This field is required</span>}
+            <select defaultValue={subCategory} className="select select-bordered w-full" {...register("subCategory")}>
+              <option disabled selected>Sub Category</option>
+              <option value="Landscape Painting">Landscape Painting</option>
+              <option value="Portrait Drawing">Portrait Drawing</option>
+              <option value="Watercolour Painting">Watercolour Painting</option>
+              <option value="Oil Painting">Oil Painting</option>
+              <option value="Charcoal Sketching">Charcoal Sketching</option>
+              <option value="Cartoon Drawing">Cartoon Drawing</option>
+            </select>
           </div>
         </div>
 

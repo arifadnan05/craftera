@@ -13,9 +13,9 @@ const AddCraftItem = () => {
     formState: { errors },
   } = useForm()
   const onSubmit = (data) => {
-    const { item_name, subcategory_name, price, processing_time, rating, customization, stockStatus, short_description, photo } = data;
+    const { item_name, subCategory, price, processing_time, rating, customization, stockStatus, short_description, photo } = data;
 
-    const craftItem = { item_name, subcategory_name, price, processing_time, rating, customization, stockStatus, short_description, photo, userEmail, userName }
+    const craftItem = { item_name, subCategory, price, processing_time, rating, customization, stockStatus, short_description, photo, userEmail, userName }
     fetch('http://localhost:5000/craft-item', {
       method: 'POST',
       headers: {
@@ -43,18 +43,25 @@ const AddCraftItem = () => {
             {errors.photo && <span>This field is required</span>}
           </div>
           <div className="flex flex-col w-1/2">
-            <input type="text" placeholder="Subcategory Name" className="input input-bordered w-full" {...register("subcategory_name", { required: true })} />
-            {errors.photo && <span>This field is required</span>}
+            <select className="select select-bordered w-full" {...register("subCategory")}>
+              <option disabled selected>Sub Category</option>
+              <option value="Landscape Painting">Landscape Painting</option>
+              <option value="Portrait Drawing">Portrait Drawing</option>
+              <option value="Watercolour Painting">Watercolour Painting</option>
+              <option value="Oil Painting">Oil Painting</option>
+              <option value="Charcoal Sketching">Charcoal Sketching</option>
+              <option value="Cartoon Drawing">Cartoon Drawing</option>
+            </select>
           </div>
         </div>
 
         <div className="w-full flex justify-center space-x-8 my-6">
           <div className="flex flex-col w-1/2">
-            <input type="text" placeholder="Price" className="input input-bordered w-full" {...register("price", { required: true })} />
+            <input type="number" placeholder="Price" className="input input-bordered w-full" {...register("price", { required: true })} />
             {errors.price && <span>This field is required</span>}
           </div>
           <div className="flex flex-col w-1/2">
-            <input type="text" placeholder="Processing Time" className="input input-bordered w-full" {...register("processing_time", { required: true })} />
+            <input type="number" placeholder="Processing Time" className="input input-bordered w-full" {...register("processing_time", { required: true })} />
             {errors.processing_time && <span>This field is required</span>}
           </div>
         </div>
@@ -87,7 +94,7 @@ const AddCraftItem = () => {
           <input type="text" placeholder="Photo URL" className="input input-bordered w-full" {...register("photo", { required: true })} />
           {errors.photo && <span>This field is required</span>}
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-7">
           <button className="btn btn-info px-8 text-neutral-950 font-medium text-lg">Add</button>
         </div>
       </form>
