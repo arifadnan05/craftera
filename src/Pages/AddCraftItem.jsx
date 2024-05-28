@@ -45,12 +45,12 @@ const AddCraftItem = () => {
           <div className="flex flex-col w-1/2">
             <select className="select select-bordered w-full" {...register("subCategory")}>
               <option disabled selected>Sub Category</option>
-              <option value="Landscape Painting">Landscape Painting</option>
-              <option value="Portrait Drawing">Portrait Drawing</option>
-              <option value="Watercolour Painting">Watercolour Painting</option>
-              <option value="Oil Painting">Oil Painting</option>
-              <option value="Charcoal Sketching">Charcoal Sketching</option>
-              <option value="Cartoon Drawing">Cartoon Drawing</option>
+              <option value="landscape_painting">Landscape Painting</option>
+              <option value="portrait_drawing">Portrait Drawing</option>
+              <option value="watercolour_painting">Watercolour Painting</option>
+              <option value="oil_painting">Oil Painting</option>
+              <option value="charcoal_sketching">Charcoal Sketching</option>
+              <option value="cartoon_drawing">Cartoon Drawing</option>
             </select>
           </div>
         </div>

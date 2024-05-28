@@ -7,12 +7,12 @@ import Root from "../Root/Root";
 import MyCraftList from "../Pages/MyCraftList";
 import AddCraftItem from "../Pages/AddCraftItem";
 import PrivetRoutes from "./PrivetRoutes";
-import CraftItemDetails from "../Pages/CraftItemDetails";
 import UpdateMyList from "../Pages/UpdateMyList";
 import Error from "../Pages/Error/Error";
 import ViewCardDetails from "../Pages/HomeCard/ViewCardDetails";
+import Categories from "../Pages/Categories";
 
-const router = createBrowserRouter ([
+const router = createBrowserRouter([
     {
         path: '/',
         element: <Root></Root>,
@@ -45,7 +45,7 @@ const router = createBrowserRouter ([
             },
             {
                 path: '/craft-item-details/:id',
-                element: <CraftItemDetails></CraftItemDetails>,
+                element: <ViewCardDetails></ViewCardDetails>,
                 loader: () => fetch('http://localhost:5000/craft-item')
             },
             {
@@ -57,6 +57,11 @@ const router = createBrowserRouter ([
                 path: '/view-card-details/:id',
                 element: <ViewCardDetails></ViewCardDetails>,
                 loader: () => fetch(`http://localhost:5000/art-craft-card`)
+            },
+            {
+                path: '/categories/:subCategory',
+                element: <Categories></Categories>,
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.subCategory}`)
             }
         ]
     }

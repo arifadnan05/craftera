@@ -57,7 +57,7 @@ const MyCraftList = () => {
 
   return (
 
-    <div className="px-32">
+    <div>
       <div className="flex justify-center mt-9">
         <form onSubmit={handleSubmit(onSubmit)}>
           <select className="border px-4 py-3 rounded-lg" {...register("customization")}>

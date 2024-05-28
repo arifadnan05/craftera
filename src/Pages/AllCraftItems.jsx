@@ -7,22 +7,6 @@ const AllCraftItems = () => {
 
   
 
-  // fetch(`http://localhost:5000/coffee/${items._id}`, {
-  //     method: 'PUT',
-  //     headers: {
-  //       'content-type': 'application/json'
-  //     },
-  //     body: JSON.stringify(updatedCoffee)
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       if (data.modifiedCount > 0) {
-  //         Swal.fire({
-  //           title: "Awesome!",
-  //           text: "Coffee Updated SuccessFully!",
-  //           icon: "success"
-  //         });
-
   return (
     <div className="overflow-x-auto">
       <table className="table">
