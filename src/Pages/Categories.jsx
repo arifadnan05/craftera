@@ -5,7 +5,7 @@ const Categories = () => {
     console.log(data)
   return (
     <div>
-      <h1>This is categories section</h1>
+      
     </div>
   )
 }

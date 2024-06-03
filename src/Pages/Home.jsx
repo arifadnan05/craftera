@@ -9,7 +9,12 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <HomeCard></HomeCard>
-      <CraftCategory></CraftCategory>
+      <div>
+        <div>
+          <div className="divider text-4xl my-28">Our Best Category</div>
+        </div>
+        <CraftCategory></CraftCategory>
+      </div>
       <PhotoGallery></PhotoGallery>
       <Contact></Contact>
     </div>
