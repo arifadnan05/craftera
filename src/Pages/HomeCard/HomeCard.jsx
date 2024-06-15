@@ -27,7 +27,7 @@ const HomeCard = () => {
               </div>
               <div className="card-actions mx-auto">
                 <Link to={`/view-card-details/${singleCard._id}`}>
-                  <button>View Details</button>
+                  <button className="btn btn-info">View Details</button>
                 </Link>
               </div>
             </div>

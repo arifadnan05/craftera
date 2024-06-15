@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { useForm } from "react-hook-form"
 import { AuthContext } from "../Provider/AuthProvider"
+import Swal from "sweetalert2"
 
 const AddCraftItem = () => {
 
@@ -27,7 +28,12 @@ const AddCraftItem = () => {
       .then(res => res.json())
       .then(data => {
         if (data.insertedId) {
-          alert('Item Added')
+          Swal.fire({
+            title: "Awesome!",
+            text: "Updated SuccessFully!",
+            icon: "success"
+          });
+
         }
       })
   }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 const Footer = () => {
     return (
         <div>
-            <footer className="footer p-10 bg-neutral text-neutral-content mb-48">
+            <footer className="footer p-10 bg-neutral text-neutral-content">
                 <aside>
                     <Link to='/'><p className="text-3xl">Craftera</p></Link>
                     <p>Craftera LTD<br />Providing reliable business since 1995</p>
