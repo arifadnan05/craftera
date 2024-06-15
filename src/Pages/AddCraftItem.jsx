@@ -17,7 +17,7 @@ const AddCraftItem = () => {
     const { item_name, subCategory, price, processing_time, rating, customization, stockStatus, short_description, photo } = data;
 
     const craftItem = { item_name, subCategory, price, processing_time, rating, customization, stockStatus, short_description, photo, userEmail, userName }
-    fetch('http://localhost:5000/craft-item', {
+    fetch('https://craftera.vercel.app/craft-item', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

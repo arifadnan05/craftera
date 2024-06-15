@@ -6,7 +6,7 @@ const HomeCard = () => {
   const [card, setCard] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/art-craft-card')
+    fetch('https://craftera.vercel.app/art-craft-card')
       .then(res => res.json())
       .then(data => {
         setCard(data)

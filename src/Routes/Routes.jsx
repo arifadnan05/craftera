@@ -25,7 +25,7 @@ const router = createBrowserRouter([
             {
                 path: '/all-art-craft-items',
                 element: <AllCraftItems></AllCraftItems>,
-                loader: () => fetch('http://localhost:5000/craft-item')
+                loader: () => fetch('https://craftera.vercel.app/craft-item')
             },
             {
                 path: '/login',
@@ -46,22 +46,22 @@ const router = createBrowserRouter([
             {
                 path: '/craft-item-details/:id',
                 element: <ViewCardDetails></ViewCardDetails>,
-                loader: () => fetch('http://localhost:5000/craft-item')
+                loader: () => fetch('https://craftera.vercel.app/craft-item')
             },
             {
                 path: '/update-my-list/:id',
                 element: <UpdateMyList></UpdateMyList>,
-                loader: ({ params }) => fetch(`http://localhost:5000/craftitem/${params.id}`)
+                loader: ({ params }) => fetch(`https://craftera.vercel.app/craftitem/${params.id}`)
             },
             {
                 path: '/view-card-details/:id',
                 element: <ViewCardDetails></ViewCardDetails>,
-                loader: () => fetch(`http://localhost:5000/art-craft-card`)
+                loader: () => fetch(`https://craftera.vercel.app/art-craft-card`)
             },
             {
                 path: '/categories/:subCategory',
                 element: <Categories></Categories>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.subCategory}`)
+                loader: ({ params }) => fetch(`https://craftera.vercel.app/category/${params.subCategory}`)
             }
         ]
     }

@@ -10,7 +10,7 @@ const MyCraftList = () => {
 
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:5000/craft-item/${user?.email}`)
+    fetch(`https://craftera.vercel.app/craft-item/${user?.email}`)
       .then(res => res.json())
       .then(data => {
         setMyItem(data)
@@ -19,7 +19,7 @@ const MyCraftList = () => {
   }, [user])
 
   const handleDelete = _id => {
-    console.log(_id)
+    // console.log(_id)
 
     Swal.fire({
       title: "Are you sure?",
@@ -37,14 +37,14 @@ const MyCraftList = () => {
           icon: "success"
         });
         // single data fetching......
-        fetch(`http://localhost:5000/craft-item/${_id}`,
+        fetch(`https://craftera.vercel.app/craft-item/${_id}`,
           {
             method: 'DELETE'
           }
         )
           .then(res => res.json())
-          .then(data => {
-            console.log(data)
+          .then(() => {
+            
           })
 
       }

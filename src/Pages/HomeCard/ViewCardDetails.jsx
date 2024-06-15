@@ -3,7 +3,7 @@ import { useLoaderData, useParams } from "react-router-dom"
 
 const ViewCardDetails = () => {
     const card = useLoaderData();
-    console.log(card)
+    // console.log(card)
     const { id } = useParams();
     const viewCard = card.find(item => item._id === id)
     const { item_name, photo, subCategory, short_description, price, rating, stockStatus } = viewCard;

@@ -1,13 +1,15 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { useForm } from "react-hook-form"
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 
 const Register = () => {
-  const { createUser, updateUserProfile, user } = useContext(AuthContext);
-console.log(user)
-
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const [errorPassword, setErrorPassword] = useState("");
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -16,27 +18,46 @@ console.log(user)
 
   const onSubmit = (data) => {
     const { name, email, photo, password } = data;
+
+    if (password.length < 6) {
+      setErrorPassword("Password should be at least 6 characters or longer ")
+      return;
+    }
+    if (!/[A-Z]/.test(password)) {
+      setErrorPassword("Your Password Should be Upper Case");
+      return;
+    }
+    if (!/[a-z]/.test(password)) {
+      setErrorPassword("Your Password Should be Lower Case");
+      return;
+    }
+
     createUser(email, password)
 
-      .then((result) => {
+      .then(() => {
         updateUserProfile(name, photo)
-        console.log(result.user)
+        // console.log(result.user)
 
-        const user = {name, email, password, photo } 
-        fetch('http://localhost:5000/user', {
-            method: 'POST',
-            headers: {
-                'content-type' : 'application/json'
-            },
-            body: JSON.stringify(user)
+        const user = { name, email, password, photo }
+        fetch('https://craftera.vercel.app/user', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(user)
 
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.insertedId){
-                alert('user added')
+          .then(res => res.json())
+          .then(data => {
+            if (data.insertedId) {
+              Swal.fire({
+                title: "Good job!",
+                text: "Registration Success!",
+                icon: "success"
+              });
+              navigate('/')
             }
-        })
+          })
 
       })
       .catch(error => {
@@ -83,6 +104,10 @@ console.log(user)
               </label>
               <input type="password" placeholder="Password" className="input input-bordered" required {...register("password", { required: true })} />
               {errors.password && <span>This field is required</span>}
+
+              {
+                errorPassword && <p>{errorPassword}</p>
+              }
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Register</button>

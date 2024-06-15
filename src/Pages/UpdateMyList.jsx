@@ -19,7 +19,7 @@ const UpdateMyList = () => {
 
 
 
-    fetch(`http://localhost:5000/craftitem/${_id}`, {
+    fetch(`https://craftera.vercel.app/craftitem/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'

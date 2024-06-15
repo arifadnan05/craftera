@@ -27,8 +27,8 @@ const Login = () => {
     const { email, password } = data;
 
     logInUser(email, password)
-      .then((userCredential) => {
-        console.log(userCredential.user)
+      .then(() => {
+        // console.log(userCredential.user)
         // navigate
         navigate(location?.state ? location.state : '/')
        
@@ -58,8 +58,8 @@ const Login = () => {
 
   const handleGoogleSingIn = () => {
     googleSingIn()
-      .then((userCredential) => {
-        console.log(userCredential.user)
+      .then(() => {
+        // console.log(userCredential.user)
         navigate(location?.state ? location.state : '/')
       })
       .catch((error) => {
@@ -69,8 +69,8 @@ const Login = () => {
 
   const handleGithubLogin = () => {
     githubSingIn()
-      .then((userCredential) => {
-        console.log(userCredential.user)
+      .then(() => {
+        // console.log(userCredential.user)
         navigate(location?.state ? location.state : '/')
       
       })
