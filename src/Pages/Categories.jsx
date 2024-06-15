@@ -8,7 +8,7 @@ const Categories = () => {
     return <Empty message={'Post not found'} address={'/'} label={'Go To Home'}></Empty>
   }
   return (
-    <div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {
         data.map(item => <div key={item._id} className="card w-96 bg-base-100 shadow-xl">
           <figure><img src={item.photo} /></figure>
@@ -20,7 +20,7 @@ const Categories = () => {
             </div>
             <div className="card-actions justify-center">
             <Link to={`/craft-item-details/${item._id}`}>
-              <button className="btn btn-primary">View Property</button>
+              <button className="btn btn-primary">View Details</button>
             </Link>
             </div>
           </div>

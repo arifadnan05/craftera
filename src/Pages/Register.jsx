@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import { useForm } from "react-hook-form"
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -112,6 +112,7 @@ const Register = () => {
             <div className="form-control mt-6">
               <button className="btn btn-primary">Register</button>
             </div>
+            <p>Already have an account? <Link to='/login'><span className="text-blue-700 font-semibold text-lg">Login</span></Link></p>
           </form>
         </div>
       </div>

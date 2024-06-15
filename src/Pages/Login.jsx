@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import google from "../../public/google.svg"
@@ -5,6 +6,7 @@ import github from "../../public/github.svg"
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -13,7 +15,6 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [errorPassword, setErrorPassword] = useState("");
 
   const {
     register,
@@ -38,18 +39,7 @@ const Login = () => {
       })
 
 
-    if (password.length < 6) {
-      setErrorPassword("Password should be at least 6 characters or longer ")
-      return;
-    }
-    else if (!/[A-Z]/.test(password)) {
-      setErrorPassword("Your Password Should be Upper Case");
-      return;
-    }
-    else if (!/[a-z]/.test(password)) {
-      setErrorPassword("Your Password Should be Lower Case");
-      return;
-    }
+    
   }
 
 
@@ -61,6 +51,12 @@ const Login = () => {
       .then(() => {
         // console.log(userCredential.user)
         navigate(location?.state ? location.state : '/')
+
+        Swal.fire({
+          title: "Good job!",
+          text: "Logged In Success",
+          icon: "success"
+        });
       })
       .catch((error) => {
         console.error(error)
@@ -72,6 +68,11 @@ const Login = () => {
       .then(() => {
         // console.log(userCredential.user)
         navigate(location?.state ? location.state : '/')
+        Swal.fire({
+          title: "Good job!",
+          text: "Logged In Success",
+          icon: "success"
+        });
       
       })
       .catch((error) => {
@@ -115,14 +116,12 @@ const Login = () => {
                   </span>
                 </label>
                 {errors.password && <span>This field is required</span>}
-                {
-                  errorPassword && <p>{errorPassword}</p>
-                }
+
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
-              <p>Already have an account? <Link to='/register'><span className="text-blue-700 font-semibold text-lg">Sing Up</span></Link></p>
+              <p>Don't have an account? <Link to='/register'><span className="text-blue-700 font-semibold text-lg">Sing Up</span></Link></p>
             </form>
 
             <div className="-mt-5 flex items-center justify-center">
