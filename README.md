@@ -36,9 +36,18 @@ Welcome to the Art & Craft Website, an online platform for art enthusiasts to ex
 
 ## Getting Started
 
-To get started with the project locally:
+To get a local copy up and running follow these simple steps.
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/arifadnan05/craftera-website.git
-   cd art-and-craft-website
+### Installation
+
+1. Clone the repo
+   ```sh
+       https://github.com/arifadnan05/craftera.git
+2. Install all dependency
+   ```sh
+       npm install
+4. Live Preview
+   ```sh
+       npm run dev
+
+##### For any query feel free to ask me any time
